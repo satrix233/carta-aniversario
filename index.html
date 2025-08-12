@@ -126,23 +126,12 @@
       z-index: 15;
       pointer-events: none;
     }
-#lemonGif {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  width: 80px;
-  height: auto;
-  z-index: 15;
-  pointer-events: none;
-}
-
-    /* VIDEO bebé limoncillo (mp4) a la izquierda, un poco más chico y un poco más abajo */
+    /* VIDEO bebé limoncillo (mp4) - esquina abajo izquierda, tamaño reducido 50% */
     #bebeVideo {
       position: fixed;
-      top: 65%;  /* un poco más abajo */
+      bottom: 100px; /* un poco arriba del limoncillo abajo de la carta */
       left: 10px;
-      transform: translateY(-50%);
-      width: 120px; /* un poco más chico */
+      width: 60px; /* 50% de 120px */
       height: auto;
       z-index: 15;
       pointer-events: none;
@@ -233,11 +222,8 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
 
   <!-- GIFs -->
   <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
-  <img id="limoncilloGif" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Limoncillo GIF" />
-  <img id="lemonGif" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Lemon GIF" />
 
-
-  <!-- VIDEO bebé limoncillo (mp4), posicionado y tamaño ajustado -->
+  <!-- VIDEO bebé limoncillo (mp4), movido y tamaño reducido -->
   <video id="bebeVideo" src="https://i.gifer.com/6ka.mp4" autoplay muted loop playsinline></video>
 
   <script>
