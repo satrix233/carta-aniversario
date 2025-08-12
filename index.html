@@ -11,11 +11,15 @@
       text-align: center;
       padding: 30px;
       color: #333;
+      overflow: hidden; /* Para que los globitos no hagan scroll */
+      position: relative;
     }
     h1 {
       color: #d6336c;
       font-size: 2.5rem;
       margin-bottom: 0.5em;
+      position: relative;
+      z-index: 10;
     }
     #mensaje {
       font-size: 1.3rem;
@@ -24,6 +28,8 @@
       margin-left: auto;
       margin-right: auto;
       line-height: 1.5;
+      position: relative;
+      z-index: 10;
     }
     #carta {
       background: #fff0f6;
@@ -35,6 +41,8 @@
       box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
       font-style: italic;
       white-space: pre-wrap;
+      position: relative;
+      z-index: 10;
     }
     button {
       background: #d6336c;
@@ -46,9 +54,36 @@
       cursor: pointer;
       transition: background 0.3s ease;
       margin-top: 20px;
+      position: relative;
+      z-index: 10;
     }
     button:hover {
       background: #a0244a;
+    }
+
+    /* Globitos */
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: red;
+      border-radius: 20px 20px 25px 25px;
+      opacity: 0.8;
+      animation-name: floatUp;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      z-index: 5;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) translateX(20px);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -93,6 +128,22 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
         btn.textContent = 'arata scrisoare😚 ';
       }
     });
+
+    // Crear globitos animados
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * window.innerWidth + 'px';
+      balloon.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      balloon.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(balloon);
+
+      setTimeout(() => {
+        balloon.remove();
+      }, 10000);
+    }
+
+    setInterval(createBalloon, 500);
   </script>
 
 </body>
