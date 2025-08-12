@@ -6,21 +6,21 @@
   <title>PENTRU IUBITA MEA FRUMOASĂ💘</title>
   <style>
     #carta {
-  background: #fff0f6;
-  border: 2px solid #d6336c;
-  padding: 20px;
-  max-width: 600px;
-  margin: 20px auto;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
-  font-style: italic;
-  white-space: pre-wrap;
-  position: relative;
-  z-index: 10;
+      background: #fff0f6;
+      border: 2px solid #d6336c;
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
+      font-style: italic;
+      white-space: pre-wrap;
+      position: relative;
+      z-index: 10;
 
-  max-height: 300px; /* altura fija */
-  overflow-y: auto;  /* scroll vertical */
-}
+      max-height: 300px; /* altura fija */
+      overflow-y: auto;  /* scroll vertical */
+    }
 
     h1 {
       color: #d6336c;
@@ -36,19 +36,6 @@
       margin-left: auto;
       margin-right: auto;
       line-height: 1.5;
-      position: relative;
-      z-index: 10;
-    }
-    #carta {
-      background: #fff0f6;
-      border: 2px solid #d6336c;
-      padding: 20px;
-      max-width: 600px;
-      margin: 20px auto;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
-      font-style: italic;
-      white-space: pre-wrap;
       position: relative;
       z-index: 10;
     }
@@ -129,6 +116,58 @@
       z-index: 15;
       pointer-events: none;
     }
+
+    /* Botón sorpresa (oculto inicialmente) */
+    #surpriseBtn {
+      display: none;
+      background: #d6336c;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.3rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      position: relative;
+      z-index: 11;
+    }
+    #surpriseBtn:hover {
+      background: #a0244a;
+    }
+
+    /* Overlay negro con texto gigante */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #overlayText {
+      color: white;
+      font-size: 4rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      user-select: none;
+    }
+    #closeOverlayBtn {
+      background: #d6336c;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #closeOverlayBtn:hover {
+      background: #a0244a;
+    }
   </style>
 </head>
 <body>
@@ -143,7 +182,16 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
 
   <button id="mostrarCartaBtn">arata scrisoare😚</button>
 
+  <!-- Botón sorpresa que aparece al final del scroll -->
+  <button id="surpriseBtn">and you know what...?</button>
+
   <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
+
+  <!-- Overlay negro con texto gigante -->
+  <div id="overlay">
+    <div id="overlayText">I LOVE YOU MORE</div>
+    <button id="closeOverlayBtn">Close</button>
+  </div>
 
   <script>
     // Efecto tipo máquina para el mensaje
@@ -164,6 +212,9 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
     // Mostrar carta con botón
     const btn = document.getElementById('mostrarCartaBtn');
     const carta = document.getElementById('carta');
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const overlay = document.getElementById('overlay');
+    const closeOverlayBtn = document.getElementById('closeOverlayBtn');
 
     btn.addEventListener('click', () => {
       if (carta.style.display === 'none') {
@@ -172,7 +223,31 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
       } else {
         carta.style.display = 'none';
         btn.textContent = 'arata scrisoare😚 ';
+        // Ocultar botón sorpresa y overlay si se cierra la carta
+        surpriseBtn.style.display = 'none';
+        overlay.style.display = 'none';
+        carta.scrollTop = 0;
       }
+    });
+
+    // Detectar cuando se llega al final del scroll del div carta
+    carta.addEventListener('scroll', () => {
+      if (carta.scrollTop + carta.clientHeight >= carta.scrollHeight) {
+        surpriseBtn.style.display = 'inline-block';
+      }
+    });
+
+    // Mostrar overlay al hacer click en el botón sorpresa
+    surpriseBtn.addEventListener('click', () => {
+      overlay.style.display = 'flex';
+    });
+
+    // Cerrar overlay
+    closeOverlayBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      // Esconder el botón sorpresa y resetear scroll
+      surpriseBtn.style.display = 'none';
+      carta.scrollTop = 0;
     });
 
     // Globitos simples
