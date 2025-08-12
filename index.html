@@ -123,7 +123,7 @@
 
     /* Overlay I LOVE YOU MORE */
     #loveMoreOverlay {
-      display: none;
+      display: none;  /* Importante que quede en none al inicio */
       position: fixed;
       top:0; left:0; right:0; bottom:0;
       background: black;
@@ -136,7 +136,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      display: flex;
+      display: none; /* doble seguridad */
       flex-wrap: wrap;
       gap: 1rem;
     }
@@ -236,6 +236,8 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
         carta.style.display = 'block';
         btnMostrarCarta.textContent = 'ascunde scrisoarea🙄';
         andYouKnowBtn.style.display = 'inline-block';
+        loveMoreOverlay.style.display = 'none';
+        finalOverlay.style.display = 'none';
       } else {
         carta.style.display = 'none';
         btnMostrarCarta.textContent = 'arata scrisoare😚';
@@ -261,3 +263,4 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
 
 </body>
 </html>
+
