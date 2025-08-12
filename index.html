@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PENTRU IUBITA MEA FRUMOASĂ💘</title>
   <style>
-    /* Fondo y fuente */
     body {
       background: #ffe6f0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,7 +13,6 @@
       color: #333;
       overflow-x: hidden;
     }
-
     /* Título con cambio rápido de color rosa */
     @keyframes colorFlash {
       0% { color: #d6336c; }
@@ -30,8 +28,6 @@
       position: relative;
       z-index: 10;
     }
-
-    /* Mensaje efecto máquina */
     #mensaje {
       font-size: 1.3rem;
       margin: 20px auto;
@@ -40,8 +36,6 @@
       position: relative;
       z-index: 10;
     }
-
-    /* Carta */
     #carta {
       background: #fff0f6;
       border: 2px solid #d6336c;
@@ -58,8 +52,6 @@
       z-index: 10;
       display: none;
     }
-
-    /* Botones */
     button {
       background: #d6336c;
       color: white;
@@ -78,8 +70,6 @@
     button:hover {
       background: #a0244a;
     }
-
-    /* Globitos */
     .balloon {
       position: fixed;
       bottom: -100px;
@@ -104,8 +94,6 @@
         opacity: 0;
       }
     }
-
-    /* Confeti */
     .confetti {
       position: fixed;
       width: 10px;
@@ -127,7 +115,6 @@
         opacity: 0;
       }
     }
-
     /* GIF Hello Kitty derecha */
     #helloKittyGif {
       position: fixed;
@@ -139,26 +126,34 @@
       z-index: 15;
       pointer-events: none;
     }
-
-    /* GIF Limoncillo izquierda */
+    /* GIF limoncillo izquierda (sin cambios) */
     #limoncilloGif {
       position: fixed;
-      top: 50%;
+      top: 60%;
       left: 10px;
       transform: translateY(-50%);
-      width: 100px;
+      width: 80px;
       height: auto;
       z-index: 15;
       pointer-events: none;
     }
-
-    /* Pantalla negra mensaje final */
-    #finalScreen {
+    /* VIDEO bebé limoncillo (mp4) a la izquierda, un poco más chico y un poco más abajo */
+    #bebeVideo {
       position: fixed;
-      top:0;
-      left:0;
-      width: 100vw;
-      height: 100vh;
+      top: 65%;  /* un poco más abajo */
+      left: 10px;
+      transform: translateY(-50%);
+      width: 120px; /* un poco más chico */
+      height: auto;
+      z-index: 15;
+      pointer-events: none;
+      border-radius: 10px;
+    }
+    /* Pantallas de mensajes */
+    #loveMoreScreen, #finalScreen {
+      position: fixed;
+      top:0; left:0;
+      width: 100vw; height: 100vh;
       background: black;
       color: white;
       font-size: 3rem;
@@ -170,50 +165,30 @@
       z-index: 9999;
       padding: 20px;
     }
-    #finalScreen button {
-      margin-top: 40px;
-      padding: 15px 30px;
-      font-size: 1.5rem;
-      border-radius: 12px;
-    }
-
-    /* Pantalla "I LOVE YOU MORE precious" */
-    #loveMoreScreen {
-      position: fixed;
-      top:0;
-      left:0;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      color: white;
-      font-size: 3rem;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      z-index: 9998;
-      padding: 20px;
-    }
     #loveMoreScreen p {
       font-size: 1.8rem;
       margin-top: 15px;
       font-style: normal;
     }
-    #loveMoreScreen button {
+    #loveMoreScreen button, #finalScreen button {
       margin-top: 40px;
       padding: 15px 30px;
       font-size: 1.5rem;
       border-radius: 12px;
+      cursor: pointer;
+      border: none;
+      background: #d6336c;
+      color: white;
+      transition: background 0.3s ease;
     }
-
+    #loveMoreScreen button:hover, #finalScreen button:hover {
+      background: #a0244a;
+    }
     /* Video explosión */
     #explosionVideo {
       position: fixed;
-      top:0;
-      left:0;
-      width: 100vw;
-      height: 100vh;
+      top:0; left:0;
+      width: 100vw; height: 100vh;
       object-fit: cover;
       z-index: 10000;
       background: black;
@@ -222,7 +197,7 @@
 </head>
 <body>
 
-  <!-- Video de explosión que aparece al cargar -->
+  <!-- Video explosión -->
   <video id="explosionVideo" autoplay muted playsinline>
     <source src="https://media.giphy.com/media/3o7aD5tv1ogNBtDhDi/giphy.mp4" type="video/mp4" />
     Tu navegador no soporta videos.
@@ -231,7 +206,7 @@
   <!-- Título -->
   <h1>PENTRU IUBITA MEA FRUMOASĂ💘</h1>
 
-  <!-- Mensaje efecto máquina -->
+  <!-- Mensaje máquina -->
   <div id="mensaje">Charging special message🥰🥰🥰...</div>
 
   <!-- Carta -->
@@ -245,7 +220,7 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
     <button id="youKnowBtn" style="display:none;">and you know what...?</button>
   </div>
 
-  <!-- Pantalla "I LOVE YOU MORE precious" -->
+  <!-- Pantalla I LOVE YOU MORE -->
   <div id="loveMoreScreen">
     <div>I LOVE YOU MORE</div>
     <p>precious.</p>
@@ -261,8 +236,11 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
   <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
   <img id="limoncilloGif" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Limoncillo GIF" />
 
+  <!-- VIDEO bebé limoncillo (mp4), posicionado y tamaño ajustado -->
+  <video id="bebeVideo" src="https://i.gifer.com/6ka.mp4" autoplay muted loop playsinline></video>
+
   <script>
-    // Esperar a que el video explosión termine para mostrar la página
+    // Variables elementos
     const explosionVideo = document.getElementById('explosionVideo');
     const titulo = document.querySelector('h1');
     const mensaje = document.getElementById('mensaje');
@@ -272,8 +250,9 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
     const loveMoreScreen = document.getElementById('loveMoreScreen');
     const finalScreen = document.getElementById('finalScreen');
     const finalRevealBtn = document.getElementById('finalRevealBtn');
+    const bebeVideo = document.getElementById('bebeVideo');
 
-    // Inicialmente ocultar todo menos el video
+    // Al principio ocultar todo menos el video explosión
     titulo.style.display = 'none';
     mensaje.style.display = 'none';
     carta.style.display = 'none';
@@ -281,16 +260,18 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
     youKnowBtn.style.display = 'none';
     loveMoreScreen.style.display = 'none';
     finalScreen.style.display = 'none';
+    bebeVideo.style.display = 'none';
 
+    // Cuando el video explosión termine
     explosionVideo.onended = () => {
       explosionVideo.style.display = 'none';
-      // Mostrar contenido principal
       titulo.style.display = 'block';
       mensaje.style.display = 'block';
       mostrarCartaBtn.style.display = 'inline-block';
+      bebeVideo.style.display = 'block'; // mostrar video bebé limoncillo
     };
 
-    // Efecto máquina para el mensaje
+    // Efecto máquina texto mensaje
     const texto = "LA MULTI ANI DE ANIVERSARE IUBITA MEA.";
     let index = 0;
     function escribirTexto() {
@@ -303,7 +284,7 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
     mensaje.innerHTML = '';
     escribirTexto();
 
-    // Mostrar carta y alternar botón
+    // Mostrar/ocultar carta y toggle botón texto
     mostrarCartaBtn.addEventListener('click', () => {
       if (carta.style.display === 'none') {
         carta.style.display = 'block';
@@ -311,11 +292,11 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
       } else {
         carta.style.display = 'none';
         mostrarCartaBtn.textContent = 'arata scrisoare😚';
-        youKnowBtn.style.display = 'none'; // esconder botón si se oculta carta
+        youKnowBtn.style.display = 'none';
       }
     });
 
-    // Detectar cuando scroll se llega al fondo de la carta
+    // Mostrar botón "and you know what...?" cuando scroll abajo
     carta.addEventListener('scroll', () => {
       if (carta.scrollTop + carta.clientHeight >= carta.scrollHeight - 5) {
         youKnowBtn.style.display = 'inline-block';
@@ -324,12 +305,12 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
       }
     });
 
-    // Al tocar "and you know what...?" mostrar pantalla loveMoreScreen
+    // Mostrar pantalla loveMoreScreen al click
     youKnowBtn.addEventListener('click', () => {
       loveMoreScreen.style.display = 'flex';
     });
 
-    // Botón en pantalla loveMoreScreen para mostrar pantalla final
+    // Mostrar pantalla final al click
     finalRevealBtn.addEventListener('click', () => {
       loveMoreScreen.style.display = 'none';
       finalScreen.style.display = 'flex';
@@ -340,7 +321,7 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
       const balloon = document.createElement('div');
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * window.innerWidth + 'px';
-      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`; // colores random rosa/rojo
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`;
       document.body.appendChild(balloon);
       setTimeout(() => balloon.remove(), 10000);
     }
