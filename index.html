@@ -17,9 +17,8 @@
       white-space: pre-wrap;
       position: relative;
       z-index: 10;
-
-      max-height: 300px; /* altura fija */
-      overflow-y: auto;  /* scroll vertical */
+      max-height: 300px;
+      overflow-y: auto;
     }
 
     h1 {
@@ -29,6 +28,7 @@
       position: relative;
       z-index: 10;
     }
+
     #mensaje {
       font-size: 1.3rem;
       margin: 20px 0;
@@ -39,7 +39,7 @@
       position: relative;
       z-index: 10;
     }
-    /* Contenedor para los botones alineados */
+
     #botonesContenedor {
       margin-top: 20px;
       position: relative;
@@ -49,6 +49,7 @@
       gap: 15px;
       flex-wrap: wrap;
     }
+
     button {
       background: #d6336c;
       color: white;
@@ -60,6 +61,7 @@
       transition: background 0.3s ease;
       white-space: nowrap;
     }
+
     button:hover {
       background: #a0244a;
     }
@@ -79,6 +81,7 @@
       z-index: 5;
       pointer-events: none;
     }
+
     @keyframes floatUp {
       0% {
         transform: translateY(0) translateX(0);
@@ -102,6 +105,7 @@
       border-radius: 3px;
       animation: confettiFall linear forwards;
     }
+
     @keyframes confettiFall {
       0% {
         transform: translateY(-20px) rotate(0deg);
@@ -130,12 +134,14 @@
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: black;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      display: none; /* oculto por defecto */
+      display: none;
     }
+
     #overlayText {
       color: white;
       font-size: 4rem;
@@ -144,6 +150,7 @@
       margin-bottom: 30px;
       user-select: none;
     }
+
     #overlayText span {
       font-size: 2rem;
       font-weight: normal;
@@ -151,6 +158,7 @@
       margin-top: 10px;
       display: block;
     }
+
     #closeOverlayBtn {
       background: #d6336c;
       color: white;
@@ -161,16 +169,18 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
+
     #closeOverlayBtn:hover {
       background: #a0244a;
     }
 
-    /* Responsive para que en pantallas muy pequeñas los botones se apilen */
+    /* Responsive */
     @media (max-width: 400px) {
       #botonesContenedor {
         flex-direction: column;
         gap: 10px;
       }
+
       button {
         width: 100%;
         box-sizing: border-box;
@@ -189,18 +199,20 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
   </div>
 
   <div id="botonesContenedor" style="display:none;">
-    <button id="mostrarCartaBtn">arata scrisoare😚</button>
-    <button id="surpriseBtn" style="display:none;">and you know what...?</button>
+    <button id="mostrarCartaBtn">ascunde scrisoarea🙄</button>
+    <button id="andYouKnowBtn">and you know what...?</button>
   </div>
 
   <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
+
+  <audio id="musicaFondo" src="sex_on_fire.mp3" loop></audio>
 
   <div id="overlay">
     <div id="overlayText">
       I LOVE YOU MORE
       <span>precious.</span>
     </div>
-    <button id="closeOverlayBtn">Close</button>
+    <button id="closeOverlayBtn">Cerrar</button>
   </div>
 
   <script>
@@ -219,43 +231,39 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
     mensajeDiv.innerHTML = '';
     escribirTexto();
 
-    const botonesContenedor = document.getElementById('botonesContenedor');
-    const btn = document.getElementById('mostrarCartaBtn');
+    const btnMostrarCarta = document.getElementById('mostrarCartaBtn');
+    const btnAndYouKnow = document.getElementById('andYouKnowBtn');
     const carta = document.getElementById('carta');
-    const surpriseBtn = document.getElementById('surpriseBtn');
+    const botonesContenedor = document.getElementById('botonesContenedor');
+    const musica = document.getElementById('musicaFondo');
     const overlay = document.getElementById('overlay');
     const closeOverlayBtn = document.getElementById('closeOverlayBtn');
 
-    // Mostrar contenedor de botones al cargar
-    botonesContenedor.style.display = 'flex';
+    let cartaVisible = false;
 
-    btn.addEventListener('click', () => {
-      if (carta.style.display === 'none') {
-        carta.style.display = 'block';
-        btn.textContent = 'ascunde scrisoarea🙄';
-      } else {
+    btnMostrarCarta.addEventListener('click', () => {
+      if (cartaVisible) {
         carta.style.display = 'none';
-        btn.textContent = 'arata scrisoare😚';
-        surpriseBtn.style.display = 'none';
-        overlay.style.display = 'none';
-        carta.scrollTop = 0;
+        botonesContenedor.style.display = 'none';
+        btnMostrarCarta.textContent = 'arata scrisoare😚';
+        musica.pause();
+        musica.currentTime = 0;
+        cartaVisible = false;
+      } else {
+        carta.style.display = 'block';
+        botonesContenedor.style.display = 'flex';
+        btnMostrarCarta.textContent = 'ascunde scrisoarea🙄';
+        musica.play();
+        cartaVisible = true;
       }
     });
 
-    carta.addEventListener('scroll', () => {
-      if (carta.scrollTop + carta.clientHeight >= carta.scrollHeight) {
-        surpriseBtn.style.display = 'inline-block';
-      }
-    });
-
-    surpriseBtn.addEventListener('click', () => {
+    btnAndYouKnow.addEventListener('click', () => {
       overlay.style.display = 'flex';
     });
 
     closeOverlayBtn.addEventListener('click', () => {
       overlay.style.display = 'none';
-      surpriseBtn.style.display = 'none';
-      carta.scrollTop = 0;
     });
 
     // Globitos simples
