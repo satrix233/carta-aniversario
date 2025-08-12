@@ -1,132 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Letter</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PENTRU IUBITA MEA FRUMOASĂ💘</title>
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: pink;
-        overflow-x: hidden;
-    }
-    /* Pantalla de explosión */
-    #explosion-screen {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-    }
-    #explosion-screen video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    /* Contenido principal */
-    #main-content {
-        display: none;
-        padding: 20px;
-        position: relative;
-    }
-    .gif-side {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 150px;
-        z-index: 5;
-    }
-    .gif-left {
-        left: 10px;
-    }
-    .gif-right {
-        right: 10px;
-    }
-    .gif-corner {
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        width: 80px;
-        z-index: 6;
-    }
-    .letter {
-        max-width: 600px;
-        margin: 0 auto;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        margin-top: 20px;
-        cursor: pointer;
-        background: #ff4081;
-        border: none;
-        color: white;
-        border-radius: 5px;
-    }
-    /* Pantalla negra final */
-    #final-screen {
-        display: none;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: black;
-        color: white;
-        font-size: 3em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        z-index: 999;
-    }
+  :root{ --pink:#ffe6f0; --accent:#d6336c; --accent-dark:#a0244a; }
+  html,body{height:100%; margin:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:var(--pink); color:#333;}
+  /* EXPLOSION full-screen */
+  #explosion-screen{
+    position:fixed; inset:0; background:black; z-index:9999; display:flex; align-items:center; justify-content:center;
+  }
+  #explosion-screen video{ width:100%; height:100%; object-fit:cover; }
+
+  /* MAIN content hidden until explosion ends */
+  #main-content{ display:none; position:relative; min-height:100vh; padding:30px; box-sizing:border-box; }
+
+  /* Left video and right gif */
+  .side-media { position:fixed; top:50%; transform:translateY(-50%); z-index:6; pointer-events:none; }
+  .left-video{ left:12px; width:140px; max-width:18vw; }
+  .right-gif{ right:12px; width:120px; max-width:18vw; }
+
+  /* lemon corner */
+  .lemon-corner{ position:fixed; bottom:12px; left:12px; width:80px; z-index:7; pointer-events:none; }
+
+  /* Header / message / card */
+  h1{ color:var(--accent); font-size:2.2rem; margin:0 0 8px; text-align:center; z-index:10; }
+  #mensaje{ text-align:center; margin:8px auto 18px; max-width:700px; font-size:1.15rem; line-height:1.4; z-index:10; }
+  #carta{
+    background:#fff0f6; border:2px solid var(--accent); padding:20px; max-width:680px; margin:18px auto; border-radius:14px;
+    box-shadow:0 0 12px rgba(214,51,108,0.2); font-style:italic; white-space:pre-wrap; max-height:320px; overflow:auto; z-index:10;
+  }
+
+  /* Buttons container (keeps buttons inline near center) */
+  #botones { display:flex; justify-content:center; gap:12px; margin-top:16px; z-index:10; }
+  button{
+    background:var(--accent); color:#fff; border:none; padding:10px 18px; border-radius:9px; font-size:1rem; cursor:pointer;
+  }
+  button:hover{ background:var(--accent-dark); }
+
+  /* balloons & confetti elements (z-index below content) */
+  .balloon, .confetti{ pointer-events:none; z-index:4; position:fixed; }
+
+  /* LOVE overlay (first overlay) */
+  #loveMoreOverlay{
+    display:none; position:fixed; inset:0; background:#000; color:#fff; z-index:10000;
+    display:flex; flex-direction:column; justify-content:center; align-items:center; gap:1rem; text-align:center;
+  }
+  #loveMoreOverlay .big{ font-size:4rem; font-weight:800; letter-spacing:0.02em; }
+  #loveMoreOverlay .small{ font-size:1.6rem; color:#ccc; font-weight:400; }
+  #loveMoreOverlay .btnOverlay{ margin-top:8px; padding:12px 22px; font-size:1.2rem; border-radius:10px; background:var(--accent); color:#fff; border:none; }
+
+  /* FINAL overlay */
+  #finalOverlay{
+    display:none; position:fixed; inset:0; background:#000; color:#fff; z-index:11000;
+    display:flex; justify-content:center; align-items:center; text-align:center; font-size:2.6rem; padding:20px;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width:480px){
+    .left-video{ width:110px; }
+    .right-gif{ width:90px; }
+    .lemon-corner{ width:56px; }
+    #carta{ max-height:280px; }
+    #loveMoreOverlay .big{ font-size:2.6rem; }
+    #loveMoreOverlay .small{ font-size:1.1rem; }
+    #finalOverlay{ font-size:1.8rem; }
+  }
 </style>
 </head>
 <body>
 
-<!-- Pantalla de explosión -->
-<div id="explosion-screen">
-    <video src="https://i.gifer.com/1KLn.mp4" autoplay muted playsinline></video>
-</div>
+  <!-- EXPLOSION (reproduce solo 1 vez) -->
+  <div id="explosion-screen" aria-hidden="true">
+    <video id="explosionVideo" src="https://i.gifer.com/Ws1o.mp4" autoplay muted playsinline></video>
+  </div>
 
-<!-- Contenido principal -->
-<div id="main-content">
-    <img class="gif-side gif-left" src="https://i.gifer.com/6ka.mp4" alt="Video Left">
-    <img class="gif-side gif-right" src="https://media.tenor.com/T4SwShg5LCAAAAAi/hello-kitty.gif" alt="Hello Kitty">
-    <img class="gif-corner" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Lemon">
+  <!-- SIDE MEDIA: left video (mp4), right Hello Kitty gif, lemon gif in corner -->
+  <video class="side-media left-video" id="leftVideo" src="https://i.gifer.com/6ka.mp4" autoplay muted loop playsinline></video>
+  <img class="side-media right-gif" id="helloGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty" />
+  <img class="lemon-corner" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Lemonito" />
 
-    <div class="letter">
-        <p>Querida [nombre],</p>
-        <p>Esta es tu carta especial... ❤️</p>
-        <p>Con mucho amor, [tu nombre]</p>
-        <button onclick="showLove()">And you know what...?</button>
+  <!-- MAIN CONTENT (hidden until explosion ends) -->
+  <div id="main-content" aria-hidden="true">
+    <h1>PENTRU IUBITA MEA FRUMOASĂ💘</h1>
+
+    <div id="mensaje">Charging special message🥰🥰🥰...</div>
+
+    <div id="carta" style="display:none;">
+LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUCH, a fucking lot i dont even have words to describe how i feel with you the love that i feel literally you are the best that ever happened to me and now we are already 2 months together, i cant believe it fr, is already 00 there so is 15 so i will send u this in that moment, but im so fucking happy of what i have with you, so for real🥰 you are my soul my baby my alessia my pretty my love my soulmate my partner my bestfriend my lady my precious my all, you make literally all my days better, even if im not happy or good you make me be happy, you make me be my best version, and you are the person with that i wanna be all my fucking life forever🥰💘you means literally EVERYTHING ALL for me, all my life you are all my life nothing more cares when im with you cause you are the only important thing that i wanna take care of, i enjoy so much being with you and i wanna kiss you all i cant wait for when i will be there in person to be able to make you all the things that i thought, because they are a lot and i promise you I WILL BE THERE TO DO IT i will be there so fr, cause i will go, and we will see each other, and we will be so near and close, and im so happy for that thinking about it cause i need it🥰 and anyways im already happy all the days of my life being in a relationship with you, you are the love of my life and literally my first and last thought, my mood turns good automatically when you talk to me, i would do anything for you ANYTHING, DOESNT EVEN CARE WHAT, i never met a person like you with a heart like yours and im so happy for that, you are the best woman in this world, my only one my favorite person literally, i would kill all the persons in the world if is necessary to be the only person that is by your side, cause is the only thing that i think about , to be with you🥰, thank you for all for all that you did until now cause you did perfect even if you say you didnt or you dont, to me you are perfect, you are more than perfect you are more than i ever asked for and i wish we could continue like this or even better if is that possible(cause you already do so perfect)because i like it so much🥰, I wanna make you the mom of my future kids and i wanna buy a house with you there and spend all the time of my life with you i wanna have kids with you cats all, i wanna be fucking grandpa and grandma with you, by your side cause is only you, only alessia, thats all for me and im more than happy with that, gracias por hacerme el hombre mas feliz del mundo mi alessia hermosa:), te amo mucho, feliz aniversario de nuestros primeros dos meses mi amor, espero podamos tener mucho mas que solo dos juntos:)💘💞💕💞💓💗💓💖💖💘❤️‍🔥❣️❤️‍🩹💝💖💖💕💓💗❣️❤️‍🔥💞💝💖🛐
     </div>
-</div>
 
-<!-- Pantalla negra final -->
-<div id="final-screen">
-    <div>I LOVE YOU MORE<br>precious.</div>
-</div>
+    <div id="botones">
+      <button id="toggleCartaBtn">arata scrisoare😚</button>
+      <button id="andYouKnowBtn" style="display:none;">and you know what...?</button>
+    </div>
+  </div>
+
+  <!-- Overlays -->
+  <div id="loveMoreOverlay" aria-hidden="true">
+    <div class="big">I LOVE YOU MORE</div>
+    <div class="small">precious.</div>
+    <button id="loveMoreNextBtn" class="btnOverlay">and you know what..?</button>
+  </div>
+
+  <div id="finalOverlay" aria-hidden="true">I DO MORE MF. WHAT WAS YOU EXPECTING</div>
 
 <script>
-    // Mostrar contenido después de explosión
-    const explosion = document.querySelector("#explosion-screen video");
-    explosion.onended = () => {
-        document.getElementById("explosion-screen").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-    };
+  // ELEMENTS
+  const explosionVideo = document.getElementById('explosionVideo');
+  const explosionScreen = document.getElementById('explosion-screen');
+  const mainContent = document.getElementById('main-content');
+  const toggleCartaBtn = document.getElementById('toggleCartaBtn');
+  const carta = document.getElementById('carta');
+  const andYouKnowBtn = document.getElementById('andYouKnowBtn');
+  const loveMoreOverlay = document.getElementById('loveMoreOverlay');
+  const loveMoreNextBtn = document.getElementById('loveMoreNextBtn');
+  const finalOverlay = document.getElementById('finalOverlay');
+  const mensajeDiv = document.getElementById('mensaje');
 
-    // Mostrar pantalla final
-    function showLove() {
-        document.getElementById("final-screen").style.display = "flex";
+  // TYPING EFFECT
+  const texto = "LA MULTI ANI DE ANIVERSARE IUBITA MEA.";
+  let i = 0;
+  function escribirTexto(){
+    if(i < texto.length){
+      mensajeDiv.innerHTML += texto.charAt(i);
+      i++;
+      setTimeout(escribirTexto, 65);
     }
-</script>
+  }
 
+  // When explosion video ends -> hide it and show main content
+  explosionVideo.addEventListener('ended', () => {
+    explosionScreen.style.display = 'none';
+    mainContent.style.display = 'block';
+    escribirTexto();
+    // ensure left video plays (muted autoplay should work)
+    const leftV = document.getElementById('leftVideo');
+    if(leftV && leftV.paused) leftV.play().catch(()=>{ /* ignore */ });
+  });
+
+  // Safety: If explosion fails to load or autoplay blocked, fallback after 2.5s
+  setTimeout(() => {
+    if (explosionScreen.style.display !== 'none') {
+      explosionScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+      escribirTexto();
+    }
+  }, 2500);
+
+  // Toggle carta show/hide
+  toggleCartaBtn.addEventListener('click', () => {
+    if (carta.style.display === 'none' || carta.style.display === '') {
+      carta.style.display = 'block';
+      toggleCartaBtn.textContent = 'ascunde scrisoarea🙄';
+      // reset and hide overlays when opening
+      loveMoreOverlay.style.display = 'none';
+      finalOverlay.style.display = 'none';
+      // hide andYouKnow until user reaches bottom
+      andYouKnowBtn.style.display = 'none';
+      // scroll to top
+      carta.scrollTop = 0;
+    } else {
+      carta.style.display = 'none';
+      toggleCartaBtn.textContent = 'arata scrisoare😚';
+      andYouKnowBtn.style.display = 'none';
+      loveMoreOverlay.style.display = 'none';
+      finalOverlay.style.display = 'none';
+    }
+  });
+
+  // Show AND YOU KNOW when user reaches bottom of carta
+  carta.addEventListener('scroll', () => {
+    const nearBottom = carta.scrollTop + carta.clientHeight >= carta.scrollHeight - 6;
+    if (nearBottom) {
+      andYouKnowBtn.style.display = 'inline-block';
+    }
+  });
+
+  // When user clicks the andYouKnowBtn -> show LOVE overlay
+  andYouKnowBtn.addEventListener('click', () => {
+    loveMoreOverlay.style.display = 'flex';
+  });
+
+  // From LOVE overlay -> final overlay
+  loveMoreNextBtn.addEventListener('click', () => {
+    loveMoreOverlay.style.display = 'none';
+    finalOverlay.style.display = 'flex';
+  });
+
+  // Close final overlay on click
+  finalOverlay.addEventListener('click', () => {
+    finalOverlay.style.display = 'none';
+  });
+
+  // Initialize: card hidden initially, main content hidden until explosion ends
+  carta.style.display = 'none';
+  andYouKnowBtn.style.display = 'none';
+  loveMoreOverlay.style.display = 'none';
+  finalOverlay.style.display = 'none';
+</script>
 </body>
 </html>
