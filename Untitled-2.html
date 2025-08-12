@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para mi novia 💖</title>
+  <style>
+    body {
+      background: #ffe6f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 30px;
+      color: #333;
+    }
+    h1 {
+      color: #d6336c;
+      font-size: 2.5rem;
+      margin-bottom: 0.5em;
+    }
+    #mensaje {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    #carta {
+      background: #fff0f6;
+      border: 2px solid #d6336c;
+      padding: 20px;
+      max-width: 600px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
+      font-style: italic;
+      white-space: pre-wrap;
+    }
+    button {
+      background: #d6336c;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #a0244a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Para mi novia 💖</h1>
+
+  <div id="mensaje">Cargando mensaje especial...</div>
+
+  <div id="carta" style="display:none;">
+LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUCH, a fucking lot i dont even have words to describe how i feel with you the love that i feel literally you are the best that ever happened to me and now we are already 2 months together, i cant believe it fr, is already 00 there so is 15 so i will send u this in that moment, but im so fucking happy of what i have with you, so for real🥰 you are my soul my baby my alessia my pretty my love my soulmate my partner my bestfriend my lady my precious my all, you make literally all my days better, even if im not happy or good you make me be happy, you make me be my best version, and you are the person with that i wanna be all my fucking life forever🥰💘you means literally EVERYTHING ALL for me, all my life you are all my life nothing more cares when im with you cause you are the only important thing that i wanna take care of, i enjoy so much being with you and i wanna kiss you all i cant wait for when i will be there in person to be able to make you all the things that i thought, because they are a lot and i promise you I WILL BE THERE TO DO IT i will be there so fr, cause i will go, and we will see each other, and we will be so near and close, and im so happy for that thinking about it cause i need it🥰 and anyways im already happy all the days of my life being in a relationship with you, you are the love of my life and literally my first and last thought, my mood turns good automatically when you talk to me, i would do anything for you ANYTHING, DOESNT EVEN CARE WHAT, i never met a person like you with a heart like yours and im so happy for that, you are the best woman in this world, my only one my favorite person literally, i would kill all the persons in the world if is necessary to be the only person that is by your side, cause is the only thing that i think about , to be with you🥰, thank you for all for all that you did until now cause you did perfect even if you say you didnt or you dont, to me you are perfect, you are more than perfect you are more than i ever asked for and i wish we could continue like this or even better if is that possible(cause you already do so perfect)because i like it so much🥰, I wanna make you the mom of my future kids and i wanna buy a house with you there and spend all the time of my life with you i wanna have kids with you cats all, i wanna be fucking grandpa and grandma with you, by your side cause is only you, only alessia, thats all for me and im more than happy with that, gracias por hacerme el hombre mas feliz del mundo mi alessia hermosa:), te amo mucho, feliz aniversario de nuestros primeros dos meses mi amor, espero podamos tener mucho mas que solo dos juntos:)💘💞💕💞💓💗💓💖💖💘❤️‍🔥❣️❤️‍🩹💝💖💖💕💓💗❣️❤️‍🔥💞💝💖🛐
+  </div>
+
+  <button id="mostrarCartaBtn">Mostrar carta</button>
+
+  <script>
+    // Efecto tipo máquina para el mensaje
+    const texto = "Feliz aniversario, mi amor. Cada momento contigo es único y especial.";
+    const mensajeDiv = document.getElementById('mensaje');
+    let index = 0;
+
+    function escribirTexto() {
+      if (index < texto.length) {
+        mensajeDiv.innerHTML += texto.charAt(index);
+        index++;
+        setTimeout(escribirTexto, 70);
+      }
+    }
+    mensajeDiv.innerHTML = '';
+    escribirTexto();
+
+    // Mostrar carta con botón
+    const btn = document.getElementById('mostrarCartaBtn');
+    const carta = document.getElementById('carta');
+
+    btn.addEventListener('click', () => {
+      if (carta.style.display === 'none') {
+        carta.style.display = 'block';
+        btn.textContent = 'Ocultar carta';
+      } else {
+        carta.style.display = 'none';
+        btn.textContent = 'Mostrar carta';
+      }
+    });
+  </script>
+
+</body>
+</html>
