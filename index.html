@@ -137,15 +137,15 @@
 
     /* Overlay negro con texto gigante */
     #overlay {
-      display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: black;
-      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      display: none; /* oculto por defecto */
+      display: flex; /* Lo "reemplazamos" por JS cuando se muestre */
     }
     #overlayText {
       color: white;
@@ -154,6 +154,13 @@
       text-align: center;
       margin-bottom: 30px;
       user-select: none;
+    }
+    #overlayText span {
+      font-size: 2rem;
+      font-weight: normal;
+      color: #ccc;
+      margin-top: 10px;
+      display: block;
     }
     #closeOverlayBtn {
       background: #d6336c;
@@ -189,7 +196,10 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
 
   <!-- Overlay negro con texto gigante -->
   <div id="overlay">
-    <div id="overlayText">I LOVE YOU MORE</div>
+    <div id="overlayText">
+      I LOVE YOU MORE
+      <span>precious.</span>
+    </div>
     <button id="closeOverlayBtn">Close</button>
   </div>
 
