@@ -61,29 +61,28 @@
       background: #a0244a;
     }
 
-    /* Globitos caricaturescos */
+    /* Globitos simples */
     .balloon {
       position: fixed;
-      bottom: -120px;
-      width: 50px;
-      height: 70px;
-      background-size: contain;
-      background-repeat: no-repeat;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: red;
+      border-radius: 20px 20px 25px 25px;
+      opacity: 0.8;
       animation-name: floatUp;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-      opacity: 0.9;
       z-index: 5;
       pointer-events: none;
     }
-
     @keyframes floatUp {
       0% {
         transform: translateY(0) translateX(0);
-        opacity: 0.9;
+        opacity: 0.8;
       }
       100% {
-        transform: translateY(-110vh) translateX(30px);
+        transform: translateY(-110vh) translateX(20px);
         opacity: 0;
       }
     }
@@ -110,6 +109,18 @@
         opacity: 0;
       }
     }
+
+    /* GIF Hello Kitty al costado derecho */
+    #helloKittyGif {
+      position: fixed;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      width: 120px;
+      height: auto;
+      z-index: 15;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -123,6 +134,8 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
   </div>
 
   <button id="mostrarCartaBtn">arata scrisoare😚</button>
+
+  <img id="helloKittyGif" src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="Hello Kitty GIF" />
 
   <script>
     // Efecto tipo máquina para el mensaje
@@ -154,28 +167,18 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
       }
     });
 
-    // Globitos caricaturescos usando imágenes PNG
-    const balloonImages = [
-     'https://i.imgur.com/1XbHyhj.png',
-  'https://i.imgur.com/qbD6XLO.png',
-  'https://i.imgur.com/kXWFGmw.png',
-  'https://i.imgur.com/QkZ6P48.png'
-    ];
-
+    // Globitos simples
     function createBalloon() {
       const balloon = document.createElement('div');
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * window.innerWidth + 'px';
-      balloon.style.backgroundImage = `url(${balloonImages[Math.floor(Math.random() * balloonImages.length)]})`;
-      balloon.style.animationDuration = (6 + Math.random() * 6) + 's';
       document.body.appendChild(balloon);
 
       setTimeout(() => {
         balloon.remove();
-      }, 12000);
+      }, 10000);
     }
-
-    setInterval(createBalloon, 600);
+    setInterval(createBalloon, 500);
 
     // Confeti
     const colors = ['#e63946', '#f1faee', '#a8dadc', '#457b9d', '#ffb703', '#fb8500'];
@@ -196,7 +199,6 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
         confetti.remove();
       }, 8000);
     }
-
     setInterval(createConfetti, 200);
   </script>
 
