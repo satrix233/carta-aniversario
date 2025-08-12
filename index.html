@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PENTRU IUBITA MEA FRUMOASĂ💘</title>
-  <link rel="icon" href="heart.png" type="image/png" />
   <style>
+    /* Fondo y fuente */
     body {
       background: #ffe6f0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,22 +14,24 @@
       color: #333;
       overflow-x: hidden;
     }
+
+    /* Título con cambio rápido de color rosa */
+    @keyframes colorFlash {
+      0% { color: #d6336c; }
+      25% { color: #f06292; }
+      50% { color: #ec407a; }
+      75% { color: #e91e63; }
+      100% { color: #d6336c; }
+    }
     h1 {
-      color: #d6336c;
       font-size: 2.5rem;
       margin-bottom: 0.5em;
+      animation: colorFlash 0.5s linear infinite;
       position: relative;
       z-index: 10;
-      animation: colorChange 0.5s linear infinite alternate;
     }
-    @keyframes colorChange {
-      0% { color: #d6336c; }
-      20% { color: #e55a8b; }
-      40% { color: #f080aa; }
-      60% { color: #d6336c; }
-      80% { color: #f48fb1; }
-      100% { color: #e55a8b; }
-    }
+
+    /* Mensaje efecto máquina */
     #mensaje {
       font-size: 1.3rem;
       margin: 20px auto;
@@ -38,6 +40,8 @@
       position: relative;
       z-index: 10;
     }
+
+    /* Carta */
     #carta {
       background: #fff0f6;
       border: 2px solid #d6336c;
@@ -48,11 +52,14 @@
       box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
       font-style: italic;
       white-space: pre-wrap;
-      position: relative;
-      z-index: 10;
       max-height: 300px;
       overflow-y: auto;
+      position: relative;
+      z-index: 10;
+      display: none;
     }
+
+    /* Botones */
     button {
       background: #d6336c;
       color: white;
@@ -65,11 +72,14 @@
       margin-top: 20px;
       position: relative;
       z-index: 10;
+      margin-left: 5px;
+      margin-right: 5px;
     }
     button:hover {
       background: #a0244a;
     }
-    /* Globitos simples */
+
+    /* Globitos */
     .balloon {
       position: fixed;
       bottom: -100px;
@@ -94,6 +104,7 @@
         opacity: 0;
       }
     }
+
     /* Confeti */
     .confetti {
       position: fixed;
@@ -116,7 +127,8 @@
         opacity: 0;
       }
     }
-    /* GIF Hello Kitty al costado derecho */
+
+    /* GIF Hello Kitty derecha */
     #helloKittyGif {
       position: fixed;
       top: 50%;
@@ -127,206 +139,210 @@
       z-index: 15;
       pointer-events: none;
     }
-    /* GIF bebé al costado izquierdo */
-    #bebeGif {
+
+    /* GIF Limoncillo izquierda */
+    #limoncilloGif {
       position: fixed;
-      top: 55%;
+      top: 50%;
       left: 10px;
       transform: translateY(-50%);
       width: 100px;
       height: auto;
       z-index: 15;
       pointer-events: none;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
     }
-    /* GIF limoncillo en esquina inferior derecha */
-    #limoncilloGif {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      width: 80px;
-      height: auto;
-      z-index: 15;
-      pointer-events: none;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
-    }
-    /* Pantalla negra "I LOVE YOU MORE" */
-    #blackScreen {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: black;
-      color: white;
-      font-size: 5rem;
-      font-weight: bold;
-      text-align: center;
-      padding-top: 40vh;
-      z-index: 1000;
-      user-select: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-shrink: 0;
-    }
-    #blackScreen button {
-      margin-top: 40px;
-      font-size: 2rem;
-      padding: 10px 20px;
-      background: #d6336c;
-      border-radius: 10px;
-      cursor: pointer;
-      border: none;
-      color: white;
-      transition: background 0.3s ease;
-    }
-    #blackScreen button:hover {
-      background: #a0244a;
-    }
-    /* Pantalla "And you know what..?" texto gigante */
+
+    /* Pantalla negra mensaje final */
     #finalScreen {
-      display: none;
       position: fixed;
-      top: 0; left: 0;
+      top:0;
+      left:0;
       width: 100vw;
       height: 100vh;
-      background-color: black;
+      background: black;
       color: white;
       font-size: 3rem;
-      font-weight: bold;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       text-align: center;
-      padding-top: 40vh;
-      z-index: 1001;
-      user-select: none;
+      z-index: 9999;
+      padding: 20px;
+    }
+    #finalScreen button {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      border-radius: 12px;
+    }
+
+    /* Pantalla "I LOVE YOU MORE precious" */
+    #loveMoreScreen {
+      position: fixed;
+      top:0;
+      left:0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: white;
+      font-size: 3rem;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      z-index: 9998;
+      padding: 20px;
+    }
+    #loveMoreScreen p {
+      font-size: 1.8rem;
+      margin-top: 15px;
+      font-style: normal;
+    }
+    #loveMoreScreen button {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      border-radius: 12px;
+    }
+
+    /* Video explosión */
+    #explosionVideo {
+      position: fixed;
+      top:0;
+      left:0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 10000;
+      background: black;
     }
   </style>
 </head>
 <body>
 
-  <!-- Explosión inicial (pantalla completa video) -->
-  <video id="explosionVideo" autoplay muted playsinline style="position: fixed; top:0; left:0; width:100vw; height:100vh; object-fit: cover; z-index: 2000;">
-    <source src="https://gifer.com/embed/Ws1o" type="video/mp4" />
+  <!-- Video de explosión que aparece al cargar -->
+  <video id="explosionVideo" autoplay muted playsinline>
+    <source src="https://media.giphy.com/media/3o7aD5tv1ogNBtDhDi/giphy.mp4" type="video/mp4" />
+    Tu navegador no soporta videos.
   </video>
 
+  <!-- Título -->
   <h1>PENTRU IUBITA MEA FRUMOASĂ💘</h1>
 
+  <!-- Mensaje efecto máquina -->
   <div id="mensaje">Charging special message🥰🥰🥰...</div>
 
-  <div id="carta" style="display:none;">
+  <!-- Carta -->
+  <div id="carta">
 LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUCH, a fucking lot i dont even have words to describe how i feel with you the love that i feel literally you are the best that ever happened to me and now we are already 2 months together, i cant believe it fr, is already 00 there so is 15 so i will send u this in that moment, but im so fucking happy of what i have with you, so for real🥰 you are my soul my baby my alessia my pretty my love my soulmate my partner my bestfriend my lady my precious my all, you make literally all my days better, even if im not happy or good you make me be happy, you make me be my best version, and you are the person with that i wanna be all my fucking life forever🥰💘you means literally EVERYTHING ALL for me, all my life you are all my life nothing more cares when im with you cause you are the only important thing that i wanna take care of, i enjoy so much being with you and i wanna kiss you all i cant wait for when i will be there in person to be able to make you all the things that i thought, because they are a lot and i promise you I WILL BE THERE TO DO IT i will be there so fr, cause i will go, and we will see each other, and we will be so near and close, and im so happy for that thinking about it cause i need it🥰 and anyways im already happy all the days of my life being in a relationship with you, you are the love of my life and literally my first and last thought, my mood turns good automatically when you talk to me, i would do anything for you ANYTHING, DOESNT EVEN CARE WHAT, i never met a person like you with a heart like yours and im so happy for that, you are the best woman in this world, my only one my favorite person literally, i would kill all the persons in the world if is necessary to be the only person that is by your side, cause is the only thing that i think about , to be with you🥰, thank you for all for all that you did until now cause you did perfect even if you say you didnt or you dont, to me you are perfect, you are more than perfect you are more than i ever asked for and i wish we could continue like this or even better if is that possible(cause you already do so perfect)because i like it so much🥰, I wanna make you the mom of my future kids and i wanna buy a house with you there and spend all the time of my life with you i wanna have kids with you cats all, i wanna be fucking grandpa and grandma with you, by your side cause is only you, only alessia, thats all for me and im more than happy with that, gracias por hacerme el hombre mas feliz del mundo mi alessia hermosa:), te amo mucho, feliz aniversario de nuestros primeros dos meses mi amor, espero podamos tener mucho mas que solo dos juntos:)💘💞💕💞💓💗💓💖💖💘❤️‍🔥❣️❤️‍🩹💝💖💖💕💓💗❣️❤️‍🔥💞💝💖🛐
   </div>
 
-  <div style="display: flex; justify-content: center; gap: 15px;">
+  <!-- Botones -->
+  <div style="max-width: 600px; margin: 0 auto;">
     <button id="mostrarCartaBtn">arata scrisoare😚</button>
-    <button id="andYouKnowBtn" style="display:none;">and you know what..?</button>
+    <button id="youKnowBtn" style="display:none;">and you know what...?</button>
   </div>
 
-  <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
-  <video id="bebeGif" src="https://i.gifer.com/6ka.mp4" autoplay loop muted playsinline></video>
-  <img id="limoncilloGif" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Limoncillo GIF" />
-
-  <div id="blackScreen">
-    I LOVE YOU MORE<br>precious.
-    <button id="finalBtn">and you know what..?</button>
+  <!-- Pantalla "I LOVE YOU MORE precious" -->
+  <div id="loveMoreScreen">
+    <div>I LOVE YOU MORE</div>
+    <p>precious.</p>
+    <button id="finalRevealBtn">and you know what...?</button>
   </div>
 
+  <!-- Pantalla final -->
   <div id="finalScreen">
     I DO MORE MF. WHAT WAS YOU EXPECTING
   </div>
 
+  <!-- GIFs -->
+  <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
+  <img id="limoncilloGif" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Limoncillo GIF" />
+
   <script>
-    // Explosión video: cuando termine, oculta el video y muestra la página
+    // Esperar a que el video explosión termine para mostrar la página
     const explosionVideo = document.getElementById('explosionVideo');
-    explosionVideo.addEventListener('ended', () => {
+    const titulo = document.querySelector('h1');
+    const mensaje = document.getElementById('mensaje');
+    const carta = document.getElementById('carta');
+    const mostrarCartaBtn = document.getElementById('mostrarCartaBtn');
+    const youKnowBtn = document.getElementById('youKnowBtn');
+    const loveMoreScreen = document.getElementById('loveMoreScreen');
+    const finalScreen = document.getElementById('finalScreen');
+    const finalRevealBtn = document.getElementById('finalRevealBtn');
+
+    // Inicialmente ocultar todo menos el video
+    titulo.style.display = 'none';
+    mensaje.style.display = 'none';
+    carta.style.display = 'none';
+    mostrarCartaBtn.style.display = 'none';
+    youKnowBtn.style.display = 'none';
+    loveMoreScreen.style.display = 'none';
+    finalScreen.style.display = 'none';
+
+    explosionVideo.onended = () => {
       explosionVideo.style.display = 'none';
-      document.body.style.overflow = 'auto';
-      showPageContent();
-    });
-
-    // Al abrir la página ocultamos contenido y scrollbar hasta que explote el video
-    function showPageContent() {
-      document.getElementById('mensaje').style.display = 'block';
-      document.getElementById('mostrarCartaBtn').style.display = 'inline-block';
-      document.getElementById('carta').style.display = 'none';
-      document.getElementById('andYouKnowBtn').style.display = 'none';
-      document.getElementById('helloKittyGif').style.display = 'block';
-      document.getElementById('bebeGif').style.display = 'block';
-      document.getElementById('limoncilloGif').style.display = 'block';
-      document.querySelector('h1').style.display = 'block';
-    }
-
-    // Iniciar con todo oculto excepto video
-    document.getElementById('mensaje').style.display = 'none';
-    document.getElementById('mostrarCartaBtn').style.display = 'none';
-    document.getElementById('carta').style.display = 'none';
-    document.getElementById('andYouKnowBtn').style.display = 'none';
-    document.getElementById('helloKittyGif').style.display = 'none';
-    document.getElementById('bebeGif').style.display = 'none';
-    document.getElementById('limoncilloGif').style.display = 'none';
-    document.querySelector('h1').style.display = 'none';
-    document.body.style.overflow = 'hidden';
+      // Mostrar contenido principal
+      titulo.style.display = 'block';
+      mensaje.style.display = 'block';
+      mostrarCartaBtn.style.display = 'inline-block';
+    };
 
     // Efecto máquina para el mensaje
     const texto = "LA MULTI ANI DE ANIVERSARE IUBITA MEA.";
-    const mensajeDiv = document.getElementById('mensaje');
     let index = 0;
     function escribirTexto() {
       if (index < texto.length) {
-        mensajeDiv.innerHTML += texto.charAt(index);
+        mensaje.innerHTML += texto.charAt(index);
         index++;
         setTimeout(escribirTexto, 70);
       }
     }
+    mensaje.innerHTML = '';
+    escribirTexto();
 
-    // Botón mostrar/ocultar carta
-    const btn = document.getElementById('mostrarCartaBtn');
-    const carta = document.getElementById('carta');
-    const andYouKnowBtn = document.getElementById('andYouKnowBtn');
-    const blackScreen = document.getElementById('blackScreen');
-    const finalScreen = document.getElementById('finalScreen');
-    const finalBtn = document.getElementById('finalBtn');
-
-    btn.addEventListener('click', () => {
+    // Mostrar carta y alternar botón
+    mostrarCartaBtn.addEventListener('click', () => {
       if (carta.style.display === 'none') {
         carta.style.display = 'block';
-        btn.textContent = 'ascunde scrisoarea🙄';
-        andYouKnowBtn.style.display = 'inline-block';
-        escribirTexto();
+        mostrarCartaBtn.textContent = 'ascunde scrisoarea🙄';
       } else {
         carta.style.display = 'none';
-        btn.textContent = 'arata scrisoare😚';
-        andYouKnowBtn.style.display = 'none';
+        mostrarCartaBtn.textContent = 'arata scrisoare😚';
+        youKnowBtn.style.display = 'none'; // esconder botón si se oculta carta
       }
     });
 
-    // Botón "and you know what..?" para mostrar pantalla negra "I LOVE YOU MORE"
-    andYouKnowBtn.addEventListener('click', () => {
-      blackScreen.style.display = 'flex';
-      blackScreen.style.flexDirection = 'column';
-      blackScreen.style.justifyContent = 'center';
-      blackScreen.style.alignItems = 'center';
+    // Detectar cuando scroll se llega al fondo de la carta
+    carta.addEventListener('scroll', () => {
+      if (carta.scrollTop + carta.clientHeight >= carta.scrollHeight - 5) {
+        youKnowBtn.style.display = 'inline-block';
+      } else {
+        youKnowBtn.style.display = 'none';
+      }
     });
 
-    // Botón en pantalla negra para mostrar mensaje final
-    finalBtn.addEventListener('click', () => {
-      blackScreen.style.display = 'none';
+    // Al tocar "and you know what...?" mostrar pantalla loveMoreScreen
+    youKnowBtn.addEventListener('click', () => {
+      loveMoreScreen.style.display = 'flex';
+    });
+
+    // Botón en pantalla loveMoreScreen para mostrar pantalla final
+    finalRevealBtn.addEventListener('click', () => {
+      loveMoreScreen.style.display = 'none';
       finalScreen.style.display = 'flex';
     });
 
-    // Globitos simples
+    // Globitos
     function createBalloon() {
       const balloon = document.createElement('div');
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * window.innerWidth + 'px';
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 70%)`; // colores random rosa/rojo
       document.body.appendChild(balloon);
-
-      setTimeout(() => {
-        balloon.remove();
-      }, 10000);
+      setTimeout(() => balloon.remove(), 10000);
     }
     setInterval(createBalloon, 500);
 
@@ -343,12 +359,10 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
       confetti.style.animationTimingFunction = 'ease-in-out';
       confetti.style.opacity = 1;
       document.body.appendChild(confetti);
-
-      setTimeout(() => {
-        confetti.remove();
-      }, 8000);
+      setTimeout(() => confetti.remove(), 8000);
     }
     setInterval(createConfetti, 200);
   </script>
+
 </body>
 </html>
