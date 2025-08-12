@@ -39,6 +39,16 @@
       position: relative;
       z-index: 10;
     }
+    /* Contenedor para los botones alineados */
+    #botonesContenedor {
+      margin-top: 20px;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
     button {
       background: #d6336c;
       color: white;
@@ -48,9 +58,7 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s ease;
-      margin-top: 20px;
-      position: relative;
-      z-index: 10;
+      white-space: nowrap;
     }
     button:hover {
       background: #a0244a;
@@ -117,24 +125,6 @@
       pointer-events: none;
     }
 
-    /* Botón sorpresa (oculto inicialmente) */
-    #surpriseBtn {
-      display: none;
-      background: #d6336c;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1.3rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      position: relative;
-      z-index: 11;
-    }
-    #surpriseBtn:hover {
-      background: #a0244a;
-    }
-
     /* Overlay negro con texto gigante */
     #overlay {
       position: fixed;
@@ -174,6 +164,18 @@
     #closeOverlayBtn:hover {
       background: #a0244a;
     }
+
+    /* Responsive para que en pantallas muy pequeñas los botones se apilen */
+    @media (max-width: 400px) {
+      #botonesContenedor {
+        flex-direction: column;
+        gap: 10px;
+      }
+      button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
   </style>
 </head>
 <body>
@@ -186,14 +188,13 @@
 LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUCH, a fucking lot i dont even have words to describe how i feel with you the love that i feel literally you are the best that ever happened to me and now we are already 2 months together, i cant believe it fr, is already 00 there so is 15 so i will send u this in that moment, but im so fucking happy of what i have with you, so for real🥰 you are my soul my baby my alessia my pretty my love my soulmate my partner my bestfriend my lady my precious my all, you make literally all my days better, even if im not happy or good you make me be happy, you make me be my best version, and you are the person with that i wanna be all my fucking life forever🥰💘you means literally EVERYTHING ALL for me, all my life you are all my life nothing more cares when im with you cause you are the only important thing that i wanna take care of, i enjoy so much being with you and i wanna kiss you all i cant wait for when i will be there in person to be able to make you all the things that i thought, because they are a lot and i promise you I WILL BE THERE TO DO IT i will be there so fr, cause i will go, and we will see each other, and we will be so near and close, and im so happy for that thinking about it cause i need it🥰 and anyways im already happy all the days of my life being in a relationship with you, you are the love of my life and literally my first and last thought, my mood turns good automatically when you talk to me, i would do anything for you ANYTHING, DOESNT EVEN CARE WHAT, i never met a person like you with a heart like yours and im so happy for that, you are the best woman in this world, my only one my favorite person literally, i would kill all the persons in the world if is necessary to be the only person that is by your side, cause is the only thing that i think about , to be with you🥰, thank you for all for all that you did until now cause you did perfect even if you say you didnt or you dont, to me you are perfect, you are more than perfect you are more than i ever asked for and i wish we could continue like this or even better if is that possible(cause you already do so perfect)because i like it so much🥰, I wanna make you the mom of my future kids and i wanna buy a house with you there and spend all the time of my life with you i wanna have kids with you cats all, i wanna be fucking grandpa and grandma with you, by your side cause is only you, only alessia, thats all for me and im more than happy with that, gracias por hacerme el hombre mas feliz del mundo mi alessia hermosa:), te amo mucho, feliz aniversario de nuestros primeros dos meses mi amor, espero podamos tener mucho mas que solo dos juntos:)💘💞💕💞💓💗💓💖💖💘❤️‍🔥❣️❤️‍🩹💝💖💖💕💓💗❣️❤️‍🔥💞💝💖🛐
   </div>
 
-  <button id="mostrarCartaBtn">arata scrisoare😚</button>
-
-  <!-- Botón sorpresa que aparece al final del scroll -->
-  <button id="surpriseBtn">and you know what...?</button>
+  <div id="botonesContenedor" style="display:none;">
+    <button id="mostrarCartaBtn">arata scrisoare😚</button>
+    <button id="surpriseBtn" style="display:none;">and you know what...?</button>
+  </div>
 
   <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
 
-  <!-- Overlay negro con texto gigante -->
   <div id="overlay">
     <div id="overlayText">
       I LOVE YOU MORE
@@ -218,12 +219,15 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
     mensajeDiv.innerHTML = '';
     escribirTexto();
 
-    // Mostrar carta con botón
+    const botonesContenedor = document.getElementById('botonesContenedor');
     const btn = document.getElementById('mostrarCartaBtn');
     const carta = document.getElementById('carta');
     const surpriseBtn = document.getElementById('surpriseBtn');
     const overlay = document.getElementById('overlay');
     const closeOverlayBtn = document.getElementById('closeOverlayBtn');
+
+    // Mostrar contenedor de botones al cargar
+    botonesContenedor.style.display = 'flex';
 
     btn.addEventListener('click', () => {
       if (carta.style.display === 'none') {
@@ -231,30 +235,25 @@ LA MULTI ANI DE ANIVERSARE IUBITA MEA, IUBIREA MEA, I LOVE YOU SO MUCH FR SO MUC
         btn.textContent = 'ascunde scrisoarea🙄';
       } else {
         carta.style.display = 'none';
-        btn.textContent = 'arata scrisoare😚 ';
-        // Ocultar botón sorpresa y overlay si se cierra la carta
+        btn.textContent = 'arata scrisoare😚';
         surpriseBtn.style.display = 'none';
         overlay.style.display = 'none';
         carta.scrollTop = 0;
       }
     });
 
-    // Detectar cuando se llega al final del scroll del div carta
     carta.addEventListener('scroll', () => {
       if (carta.scrollTop + carta.clientHeight >= carta.scrollHeight) {
         surpriseBtn.style.display = 'inline-block';
       }
     });
 
-    // Mostrar overlay al hacer click en el botón sorpresa
     surpriseBtn.addEventListener('click', () => {
       overlay.style.display = 'flex';
     });
 
-    // Cerrar overlay
     closeOverlayBtn.addEventListener('click', () => {
       overlay.style.display = 'none';
-      // Esconder el botón sorpresa y resetear scroll
       surpriseBtn.style.display = 'none';
       carta.scrollTop = 0;
     });
