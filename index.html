@@ -67,6 +67,32 @@
     #loveMoreOverlay .small{ font-size:1.1rem; }
     #finalOverlay{ font-size:1.8rem; }
   }
+  /* Título: cambio muy rápido entre tonos de rosa, pero siempre legible */
+h1 {
+  font-size: 2.5rem;            /* mantiene el tamaño que ya tenías */
+  margin-bottom: 0.5em;
+  position: relative;
+  z-index: 10;
+
+  /* animación de color */
+  animation: colorCycle 0.28s linear infinite;
+  /* una sombra de texto ligera para mejorar contraste sobre fondos claros */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.06);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* keyframes con varios rosas legibles distintos al fondo #ffe6f0 */
+@keyframes colorCycle {
+  0%   { color: #e91e63; } /* rosa fuerte */
+  16%  { color: #ff3b8c; } 
+  33%  { color: #ff66a3; } 
+  50%  { color: #ff1f6b; } 
+  66%  { color: #ff7ab3; } 
+  83%  { color: #cc1750; } 
+  100% { color: #e91e63; } 
+}
+
 </style>
 </head>
 <body>
