@@ -13,7 +13,7 @@
       color: #333;
       overflow-x: hidden;
     }
-    /* Título con cambio rápido de color rosa */
+
     @keyframes colorFlash {
       0% { color: #d6336c; }
       25% { color: #f06292; }
@@ -21,6 +21,7 @@
       75% { color: #e91e63; }
       100% { color: #d6336c; }
     }
+
     h1 {
       font-size: 2.5rem;
       margin-bottom: 0.5em;
@@ -28,6 +29,7 @@
       position: relative;
       z-index: 10;
     }
+
     #mensaje {
       font-size: 1.3rem;
       margin: 20px auto;
@@ -36,6 +38,7 @@
       position: relative;
       z-index: 10;
     }
+
     #carta {
       background: #fff0f6;
       border: 2px solid #d6336c;
@@ -52,6 +55,7 @@
       z-index: 10;
       display: none;
     }
+
     button {
       background: #d6336c;
       color: white;
@@ -67,15 +71,16 @@
       margin-left: 5px;
       margin-right: 5px;
     }
+
     button:hover {
       background: #a0244a;
     }
+
     .balloon {
       position: fixed;
       bottom: -100px;
       width: 40px;
       height: 60px;
-      background: red;
       border-radius: 20px 20px 25px 25px;
       opacity: 0.8;
       animation-name: floatUp;
@@ -84,6 +89,7 @@
       z-index: 5;
       pointer-events: none;
     }
+
     @keyframes floatUp {
       0% {
         transform: translateY(0) translateX(0);
@@ -94,17 +100,18 @@
         opacity: 0;
       }
     }
+
     .confetti {
       position: fixed;
       width: 10px;
       height: 10px;
-      background-color: red;
       opacity: 0.8;
       z-index: 5;
       pointer-events: none;
       border-radius: 3px;
       animation: confettiFall linear forwards;
     }
+
     @keyframes confettiFall {
       0% {
         transform: translateY(-20px) rotate(0deg);
@@ -115,7 +122,7 @@
         opacity: 0;
       }
     }
-    /* GIF Hello Kitty derecha */
+
     #helloKittyGif {
       position: fixed;
       top: 50%;
@@ -126,33 +133,34 @@
       z-index: 15;
       pointer-events: none;
     }
-    #limoncilloGif {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: auto;
-  z-index: 15;
-  pointer-events: none;
-}
 
-    /* VIDEO bebé limoncillo (mp4) - esquina abajo izquierda, tamaño reducido 50% */
+    #limoncilloGif {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: auto;
+      z-index: 15;
+      pointer-events: none;
+    }
+
     #bebeVideo {
       position: fixed;
-      bottom: 100px; /* un poco arriba del limoncillo abajo de la carta */
+      bottom: 100px;
       left: 10px;
-      width: 60px; /* 50% de 120px */
+      width: 60px;
       height: auto;
       z-index: 15;
       pointer-events: none;
       border-radius: 10px;
     }
-    /* Pantallas de mensajes */
+
     #loveMoreScreen, #finalScreen {
       position: fixed;
-      top:0; left:0;
-      width: 100vw; height: 100vh;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
       background: black;
       color: white;
       font-size: 3rem;
@@ -164,11 +172,13 @@
       z-index: 9999;
       padding: 20px;
     }
+
     #loveMoreScreen p {
       font-size: 1.8rem;
       margin-top: 15px;
       font-style: normal;
     }
+
     #loveMoreScreen button, #finalScreen button {
       margin-top: 40px;
       padding: 15px 30px;
@@ -180,10 +190,11 @@
       color: white;
       transition: background 0.3s ease;
     }
+
     #loveMoreScreen button:hover, #finalScreen button:hover {
       background: #a0244a;
     }
-    /* Video explosión */
+
     #explosionVideo {
       position: fixed;
       top:0; left:0;
@@ -196,50 +207,40 @@
 </head>
 <body>
 
-  <!-- Video explosión -->
   <video id="explosionVideo" autoplay muted playsinline>
     <source src="https://i.gifer.com/Ws1o.mp4" type="video/mp4" />
     Tu navegador no soporta videos.
   </video>
 
-  <!-- Título -->
   <h1>💘PENTRU IUBITA MEA FRUMOASĂ💘</h1>
 
-  <!-- Mensaje máquina -->
-  <div id="mensaje">Charging special message🥰🥰🥰...</div>
+  <div id="mensaje"></div>
 
-  <!-- Carta -->
   <div id="carta">
 🥳🥳🥳🎂🎉🍾🥂🍻🎆🎇🎈🎈🎈🎁🙌🏼🍾🎀HAPPY ANNIVERSARY MY LOVEEEEE💗👩🏻‍❤️‍💋‍👨🏻💘, AMOR DE MI VIDA HERMOSA MIA MI CORAZON, LA MULTI ANI DE ANIVERSARE IUBITA MEA, i love you so fucking much i cant believe we are already 3 months together🥰🥰🥰 you made me the happiest man on this world my Romocia Alessia, you are the best thing that ever happened in all my life and i cant believe i have something like you, is like, you are amazing you are perfect to me, you are wonderful you are extraordinary, literally you are the best woman of all this universe, you are the best literally, and all this days since i am with you all this time all this months you literally transformed my life into the best life that somebody could have, even if im having the worst life you made it the best, literally you made my life amazing and all that you do is amazing 🥰🥰🥰😍, i love you with my entire hear with my entire all soul and i cant believe i have someone like you in my life, you literally are all that i ever wanted and even more A LOT MORE, i cant even believe it, and literally all the time when i am with you or talking with you or that remember that i have you i feel so fucking happy, you are my entire happiness alessia romocia, my entire life, you are all that i want to, and literally you are my all, vos sos mi todo, mi vida entera, and i want to still with you all my entire life cause you are my favorite person in all this world, all that i wanna do in my life is by your side, i would choose you instead of whatever another person, for whatever thing, cause all that i want is WITH YOU. cause literally i cant even think in a world without you my love, i cant, you are my entire world, my entire all, and all that i imagine and think always is just you, you are my sun, mi solcito, mi bellisima, mi amor mi chiquita, you are my first and last thought, you are the cause of all my happiness, and the only thing that i wanna build in my life is a future with you, is the only that i want, and i love you so much, thank you for made me feel like this all this three months, cause literally been the best 3 months of all my life since i born, literally, the best 90 days of all this almost 20 years of life, you made me discover how feels to really love somebody, cause the only thing that i think about is about you, you are my last all my last love my kiss my last hug my only forever wife🥰🥰🥰🥰, and i wish this will continue forever cause literally you are what i want forever my alessia, just you and me forever, and i wish is like that for you too, forever, i love you so fucking much, thank you made me be the best version of me, or at least i tried to be, cause i do love you extremely much🥰🥰🥰💘💘💗👩🏻‍❤️‍💋‍👨🏻 I LOVE YOU💖❤️❤️💕💕💕💕❤️💖💖💗💗💗💘💘💘👩🏻‍❤️‍💋‍👨🏻👩🏻‍❤️‍💋‍👨🏻👩🏻‍❤️‍💋‍👨🏻💗💗💖💖💖💘💘❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🩹❤️‍🩹❤️‍🩹❣️❣️❣️💞💞💞💓💓💓💓💝💝💝💝A+S (12/8/2025) and forever ∞
   </div>
 
-  <!-- Botones -->
   <div style="max-width: 600px; margin: 0 auto;">
     <button id="mostrarCartaBtn">arata scrisoare😚</button>
     <button id="youKnowBtn" style="display:none;">and you know what...?</button>
   </div>
 
-  <!-- Pantalla I LOVE YOU MORE -->
   <div id="loveMoreScreen">
     <div>I LOVE YOU MORE</div>
     <p>precious.</p>
     <button id="finalRevealBtn">and you know what...?</button>
   </div>
 
-  <!-- Pantalla final -->
   <div id="finalScreen">
     I DO MORE MF. WHAT WAS YOU EXPECTING
   </div>
 
-  <!-- GIFs -->
   <img id="helloKittyGif" src="https://i.imgur.com/LhrcLzr.gif" alt="Hello Kitty GIF" />
   <img id="limoncilloGif" src="https://media.tenor.com/tBaC7QmUUK0AAAAj/cute-lemon.gif" alt="Limoncillo GIF" />
 
-  <!-- VIDEO bebé limoncillo (mp4), movido y tamaño reducido -->
   <video id="bebeVideo" src="https://i.gifer.com/6ka.mp4" autoplay muted loop playsinline></video>
 
   <script>
-    // Variables elementos
     const explosionVideo = document.getElementById('explosionVideo');
     const titulo = document.querySelector('h1');
     const mensaje = document.getElementById('mensaje');
@@ -251,7 +252,7 @@
     const finalRevealBtn = document.getElementById('finalRevealBtn');
     const bebeVideo = document.getElementById('bebeVideo');
 
-    // Al principio ocultar todo menos el video explosión
+    // Inicializar estado
     titulo.style.display = 'none';
     mensaje.style.display = 'none';
     carta.style.display = 'none';
@@ -261,16 +262,15 @@
     finalScreen.style.display = 'none';
     bebeVideo.style.display = 'none';
 
-    // Cuando el video explosión termine
     explosionVideo.onended = () => {
       explosionVideo.style.display = 'none';
       titulo.style.display = 'block';
       mensaje.style.display = 'block';
       mostrarCartaBtn.style.display = 'inline-block';
-      bebeVideo.style.display = 'block'; // mostrar video bebé limoncillo
+      bebeVideo.style.display = 'block';
     };
 
-    // Efecto máquina texto mensaje
+    // Efecto máquina de escribir
     const texto = "LA MULTI ANI DE ANIVERSARE IUBITA MEA.";
     let index = 0;
     function escribirTexto() {
@@ -283,7 +283,7 @@
     mensaje.innerHTML = '';
     escribirTexto();
 
-    // Mostrar/ocultar carta y toggle botón texto
+    // Toggle carta
     mostrarCartaBtn.addEventListener('click', () => {
       if (carta.style.display === 'none') {
         carta.style.display = 'block';
@@ -295,7 +295,7 @@
       }
     });
 
-    // Mostrar botón "and you know what...?" cuando scroll abajo
+    // Mostrar botón al llegar al final
     carta.addEventListener('scroll', () => {
       if (carta.scrollTop + carta.clientHeight >= carta.scrollHeight - 5) {
         youKnowBtn.style.display = 'inline-block';
@@ -304,18 +304,17 @@
       }
     });
 
-    // Mostrar pantalla loveMoreScreen al click
+    // Pantallas adicionales
     youKnowBtn.addEventListener('click', () => {
       loveMoreScreen.style.display = 'flex';
     });
 
-    // Mostrar pantalla final al click
     finalRevealBtn.addEventListener('click', () => {
       loveMoreScreen.style.display = 'none';
       finalScreen.style.display = 'flex';
     });
 
-    // Globitos
+    // Globos
     function createBalloon() {
       const balloon = document.createElement('div');
       balloon.classList.add('balloon');
